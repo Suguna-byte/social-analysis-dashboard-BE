@@ -55,14 +55,14 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'analytics_project.wsgi.application'
 
-# Database - Supabase PostgreSQL
+# Database - PostgreSQL (Railway or Supabase)
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
         'NAME': config('DB_NAME', default='postgres'),
         'USER': config('DB_USER', default='postgres'),
-        'PASSWORD': config('DB_PASSWORD'),
-        'HOST': config('DB_HOST'),
+        'PASSWORD': config('DB_PASSWORD', default=''),
+        'HOST': config('DB_HOST', default='localhost'),
         'PORT': config('DB_PORT', default='5432'),
     }
 }
@@ -96,6 +96,6 @@ REST_FRAMEWORK = {
     ]
 }
 
-# Supabase Configuration
-SUPABASE_URL = config('SUPABASE_URL')
-SUPABASE_KEY = config('SUPABASE_KEY')
+# Supabase Configuration (Optional)
+SUPABASE_URL = config('SUPABASE_URL', default='')
+SUPABASE_KEY = config('SUPABASE_KEY', default='')
